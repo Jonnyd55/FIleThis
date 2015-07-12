@@ -1,0 +1,83 @@
+<!DOCTYPE>
+
+{% load static %}
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+  	  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+  			
+
+  		<title>File This</title>
+		<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+
+	</head>
+	<body>  
+		<div class="container-fluid drop_padding">
+			<nav class="navbar">
+			    <div class="container-fluid">
+			        <div class="navbar-header">
+			          <a class="navbar-brand" href="/">FileThis</a>
+			        </div>
+			        
+			        <div id="navbar" class="navbar-collapse collapse pull-right">
+			          <ul class="nav navbar-nav">
+			            <li><a href="/">CABINET</a></li>
+			            <li><a href="/account">ACCOUNT</a></li>
+			            <li><a href="#">GROUPS</a></li>				    				    
+			            <li><a href="#">LOGOUT</a></li>
+			          </ul>
+			        </div>
+			    </div>
+			</nav>
+			<div class='container-fluid'>
+				<div class="col-lg-12 col-md-12 col-sm-12 center user_bucket">
+					{% if landing %}
+					<h3>Hi, Anne!</h3>
+					<p>What are you working on today?</p>
+					{% else %}
+
+					{% endif %}
+					<div class="col-lg-12">
+						<button class='btn user_btn'>
+							<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>UPLOAD
+						</button>
+						<button class="btn user_btn">
+							<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>ADD URL
+						</button>
+					</div>
+					<div class="col-lg-5 col-lg-offset-3 col-md-offset-3 col-md-6">
+						
+						<input id = 'search_text' class="form-control user_input" placeholder="Search your files here...">
+						<button class='btn user_btn search_btn' id='search_now'>
+							SEARCH
+						</button>
+						
+					</div>
+				</div>
+		{% block body_block %}
+		
+		{% endblock %}
+			</div>
+		</div>
+	</body>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="{% static 'js/action.js' %}">	</script>
+	
+	<script>
+	$(function(){
+		$('#search_now').click(function(){
+			var search_term = document.getElementById('search_text').value
+			window.location.href = 'http://filethis.co/search/?term=' + search_term;
+		})
+	})
+
+	</script>
+	{% block page_js%}
+
+	{% endblock %}
+</html> 

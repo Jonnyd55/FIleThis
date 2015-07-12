@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block body_block %}
+
+<div class="container">
+  	{% if type == 'devel' %}
+  	<h1>Test</h1>
+    	<a href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('http://localhost:8000/catch?url='+encodeURIComponent(q)+'&description='+encodeURIComponent(d)+'&title='+encodeURIComponent(p),'File This', 'toolbar=no,width=700,height=350'));" class="btn btn-success">
+    		File This
+    	</a>
+    	{% else %}
+	<h1>Prod</h1>
+    	<a href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('http://filethis.co/catch?url='+encodeURIComponent(q)+'&description='+encodeURIComponent(d)+'&title='+encodeURIComponent(p),'File This', 'toolbar=no,width=700,height=350'));" class="btn btn-success">
+    		File This
+    	</a>
+    {% endif %}
+</div>	
+{% endblock %}
+
+{% block page_js%}
+
+{% endblock%}
